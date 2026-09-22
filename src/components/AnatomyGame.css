@@ -1,0 +1,277 @@
+.anatomy-game {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 16px;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.anatomy-game__info {
+  text-align: center;
+}
+
+.anatomy-game__meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 6px;
+}
+
+.anatomy-game__category {
+  padding: 3px 10px;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #000;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.anatomy-game__lives {
+  font-size: 1.1rem;
+  display: flex;
+  gap: 2px;
+}
+
+.anatomy-game__life--lost {
+  opacity: 0.3;
+}
+
+.anatomy-game__title {
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin: 0 0 4px;
+  color: var(--text);
+}
+
+.anatomy-game__path-label {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.anatomy-game__dots {
+  display: inline-flex;
+  gap: 3px;
+  font-size: 0.7rem;
+}
+
+.anatomy-game__dot--filled {
+  color: var(--accent);
+}
+
+.anatomy-game__dot--empty {
+  color: var(--text-muted);
+  opacity: 0.4;
+}
+
+.anatomy-game__diagram {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 8px;
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.anatomy-diagram__svg {
+  width: 100%;
+  max-width: 280px;
+  height: auto;
+  max-height: 380px;
+}
+
+.anatomy-body {
+  fill: var(--text);
+}
+
+.anatomy-label {
+  font-size: 5.5px;
+  fill: var(--text);
+  font-weight: 600;
+  pointer-events: none;
+}
+
+.anatomy-label--start {
+  fill: #6366f1;
+  font-weight: 700;
+  font-size: 6px;
+}
+
+.anatomy-label--end {
+  fill: #ef4444;
+  font-weight: 700;
+  font-size: 6px;
+}
+
+.anatomy-line {
+  animation: line-draw 0.4s ease-out;
+}
+
+@keyframes line-draw {
+  from { opacity: 0; }
+  to { opacity: 0.7; }
+}
+
+.anatomy-marker--new circle {
+  animation: marker-pop 0.3s ease-out;
+}
+
+@keyframes marker-pop {
+  from { r: 0; }
+  to { r: 6; }
+}
+
+.anatomy-marker--end circle {
+  animation: end-pulse 2s ease-in-out infinite;
+}
+
+@keyframes end-pulse {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 1; }
+}
+
+.anatomy-game__prompt {
+  text-align: center;
+}
+
+.anatomy-game__question {
+  font-size: 0.95rem;
+  color: var(--text);
+  margin: 0 0 2px;
+}
+
+.anatomy-game__steps {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  margin: 0;
+}
+
+.anatomy-game__input {
+  position: relative;
+}
+
+.anatomy-search {
+  position: relative;
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.anatomy-search__input {
+  width: 100%;
+  padding: 10px 16px;
+  font-size: 0.95rem;
+  border: 2px solid var(--border);
+  border-radius: 8px;
+  background: var(--surface);
+  color: var(--text);
+  outline: none;
+  transition: border-color 0.15s;
+  box-sizing: border-box;
+}
+
+.anatomy-search__input:focus {
+  border-color: var(--accent);
+}
+
+.anatomy-search__input:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.anatomy-search__results {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  right: 0;
+  list-style: none;
+  margin: 0;
+  padding: 4px 0;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+  max-height: 200px;
+  overflow-y: auto;
+  z-index: 100;
+}
+
+.anatomy-search__result {
+  padding: 8px 16px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  color: var(--text);
+  transition: background 0.1s;
+}
+
+.anatomy-search__result--active {
+  background: var(--hover);
+}
+
+.anatomy-game__wrong {
+  text-align: center;
+  font-size: 0.85rem;
+  color: var(--wrong-text);
+  margin: 0;
+  animation: shake-text 0.3s ease-in-out;
+}
+
+@keyframes shake-text {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-4px); }
+  75% { transform: translateX(4px); }
+}
+
+.anatomy-game__result {
+  text-align: center;
+  padding: 12px;
+  border-radius: 10px;
+}
+
+.anatomy-game__result--win {
+  background: var(--correct-bg);
+}
+
+.anatomy-game__result--lose {
+  background: var(--wrong-bg);
+}
+
+.anatomy-game__result-text {
+  font-size: 1rem;
+  font-weight: 700;
+  margin: 0 0 6px;
+  color: var(--text);
+}
+
+.anatomy-game__chain {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin: 0;
+  line-height: 1.5;
+}
+
+.anatomy-game__shuffle {
+  align-self: center;
+  padding: 8px 20px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  border: 2px solid var(--border);
+  border-radius: 8px;
+  background: var(--surface);
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: border-color 0.15s, color 0.15s;
+}
+
+.anatomy-game__shuffle:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}

@@ -1,0 +1,51 @@
+.guess-history {
+  width: 100%;
+  max-width: 420px;
+  margin: 0 auto;
+}
+
+.guess-history__title {
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin: 0 0 6px;
+  color: var(--text-muted);
+}
+
+.guess-history__list {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.guess-history__item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-size: 0.9rem;
+}
+
+.guess-history__item--wrong {
+  background: var(--wrong-bg);
+  color: var(--wrong-text);
+}
+
+.guess-history__item--correct {
+  background: var(--correct-bg);
+  color: var(--correct-text);
+}
+
+.guess-history__number {
+  font-weight: 600;
+  min-width: 20px;
+}
+
+.guess-history__drug {
+  flex: 1;
+}
+
+.guess-history__icon {
+  font-weight: 700;
+  font-size: 1.1rem;
+}

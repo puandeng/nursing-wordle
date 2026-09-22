@@ -1,0 +1,53 @@
+.clue-list {
+  width: 100%;
+  max-width: 520px;
+  margin: 0 auto;
+}
+
+.clue-list__title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin: 0 0 8px;
+  color: var(--text);
+}
+
+.clue-list__items {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.clue-list__item {
+  padding: 10px 14px;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  line-height: 1.4;
+  transition: background 0.2s, color 0.2s, transform 0.2s;
+}
+
+.clue-list__item--visible {
+  background: var(--clue-bg);
+  color: var(--text);
+  animation: clue-reveal 0.3s ease-out;
+}
+
+.clue-list__item--hidden {
+  background: var(--surface);
+  color: var(--text-muted);
+  font-style: italic;
+  opacity: 0.5;
+}
+
+@keyframes clue-reveal {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

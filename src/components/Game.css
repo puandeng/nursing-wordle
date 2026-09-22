@@ -1,0 +1,47 @@
+.game {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 16px;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.game__status {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 0;
+}
+
+.game__clue-count {
+  font-weight: 600;
+  color: var(--accent);
+}
+
+.game__guess-count {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+.game__search {
+  padding: 8px 0;
+}
+
+.game__next {
+  align-self: center;
+  padding: 8px 20px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  border: 2px solid var(--border);
+  border-radius: 8px;
+  background: var(--surface);
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: border-color 0.15s, color 0.15s;
+}
+
+.game__next:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
