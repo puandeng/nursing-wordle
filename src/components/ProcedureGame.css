@@ -1,0 +1,275 @@
+.procedure-game {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 20px 16px;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.procedure-game__header {
+  text-align: center;
+}
+
+.procedure-game__title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--text);
+  margin: 0 0 4px;
+}
+
+.procedure-game__desc {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin: 0;
+}
+
+/* Progress bar */
+.procedure-game__progress {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.procedure-game__progress-bar {
+  flex: 1;
+  height: 8px;
+  background: var(--border);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.procedure-game__progress-fill {
+  height: 100%;
+  background: var(--accent);
+  border-radius: 4px;
+  transition: width 0.3s ease-out;
+}
+
+.procedure-game__progress-label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  flex-shrink: 0;
+}
+
+/* Steps list */
+.procedure-game__steps {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.procedure-game__step {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 12px;
+  background: var(--surface);
+  border: 1.5px solid var(--border);
+  border-radius: 8px;
+  cursor: grab;
+  user-select: none;
+  transition: border-color 0.2s, background 0.2s, transform 0.15s, box-shadow 0.2s;
+  touch-action: none;
+}
+
+.procedure-game__step:active {
+  cursor: grabbing;
+}
+
+.procedure-game__step--dragging {
+  opacity: 0.4;
+}
+
+.procedure-game__step--correct {
+  border-color: var(--correct-text);
+  background: var(--correct-bg);
+}
+
+.procedure-game__step--wrong {
+  border-color: var(--wrong-text);
+  background: var(--wrong-bg);
+}
+
+.procedure-game__step--locked {
+  cursor: default;
+  border-color: var(--correct-text);
+  background: var(--correct-bg);
+}
+
+.procedure-game__step--clone {
+  position: fixed;
+  z-index: 9999;
+  pointer-events: none;
+  opacity: 0.85;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+  transform: scale(1.02);
+}
+
+.procedure-game__step-num {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: var(--hover);
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  flex-shrink: 0;
+}
+
+.procedure-game__step--correct .procedure-game__step-num {
+  background: var(--correct-text);
+  color: #fff;
+}
+
+.procedure-game__step--wrong .procedure-game__step-num {
+  background: var(--wrong-text);
+  color: #fff;
+}
+
+.procedure-game__step--locked .procedure-game__step-num {
+  background: var(--correct-text);
+  color: #fff;
+}
+
+.procedure-game__step-text {
+  flex: 1;
+  font-size: 0.85rem;
+  color: var(--text);
+  line-height: 1.35;
+}
+
+.procedure-game__step-arrows {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  flex-shrink: 0;
+}
+
+.procedure-game__arrow {
+  width: 22px;
+  height: 16px;
+  border: none;
+  background: var(--hover);
+  border-radius: 3px;
+  font-size: 0.55rem;
+  color: var(--text-muted);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.15s, color 0.15s;
+  line-height: 1;
+}
+
+.procedure-game__arrow:hover:not(:disabled) {
+  background: var(--accent);
+  color: #fff;
+}
+
+.procedure-game__arrow:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.procedure-game__step-icon {
+  flex-shrink: 0;
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
+.procedure-game__step-icon--correct {
+  color: var(--correct-text);
+}
+
+.procedure-game__step-icon--wrong {
+  color: var(--wrong-text);
+}
+
+/* Actions */
+.procedure-game__actions {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: center;
+}
+
+.procedure-game__btn {
+  padding: 10px 24px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  border: 2px solid var(--border);
+  border-radius: 8px;
+  background: var(--surface);
+  color: var(--text);
+  cursor: pointer;
+  transition: border-color 0.15s, background 0.15s;
+  width: 100%;
+  max-width: 280px;
+}
+
+.procedure-game__btn:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.procedure-game__btn--primary {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+}
+
+.procedure-game__btn--primary:hover {
+  opacity: 0.9;
+  color: #fff;
+}
+
+.procedure-game__btn--hint,
+.procedure-game__btn--skip {
+  background: transparent;
+  border-color: var(--text-muted);
+  color: var(--text-muted);
+  font-size: 0.8rem;
+}
+
+.procedure-game__btn--hint:hover,
+.procedure-game__btn--skip:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.procedure-game__actions-row {
+  display: flex;
+  gap: 8px;
+  width: 100%;
+  max-width: 280px;
+}
+
+.procedure-game__actions-row .procedure-game__btn {
+  max-width: none;
+}
+
+/* Result */
+.procedure-game__result {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+  width: 100%;
+}
+
+.procedure-game__result-text {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--correct-text);
+}
+
+.procedure-game__result-text--skipped {
+  color: var(--text-muted);
+  font-weight: 600;
+}
