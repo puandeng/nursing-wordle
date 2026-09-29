@@ -22,27 +22,9 @@ UA = "NursingGames/1.0 (educational project; lesion image sourcing)"
 
 # Morphology term -> search phrases likely to surface a true clinical photo.
 QUERIES = {
-    "erosion": [
-        "intertrigo erosion skin", "eczema herpeticum erosions",
-        "toxic epidermal necrolysis skin", "erosive lichen planus mucosa",
-        "impetigo erosion",
-    ],
-    "polycyclic": [
-        "subacute cutaneous lupus erythematosus rash",
-        "tinea corporis", "urticaria annular polycyclic",
-        "erythema annulare centrifugum",
-    ],
-    "atrophic-scar": [
-        "acne scarring face", "boxcar acne scars", "post acne scars skin",
-        "atrophic scar",
-    ],
-    "cavernous-hemangioma": [
-        "venous malformation skin", "cavernous hemangioma tongue",
-        "hemangioma lip adult", "venous malformation arm",
-    ],
-    "pustule": [
-        "acne pustules face", "folliculitis skin pustules",
-        "impetigo pustules", "pustular rash skin",
+    "tumor": [
+        "neurofibromatosis type 1 skin", "cutaneous neurofibroma",
+        "lipoma skin large", "skin tumor arm mass",
     ],
 }
 

@@ -1,10 +1,10 @@
 [
   {
-    "lesion": "vesicle",
-    "title": "File:V\u00e9sicule varicelle chickenpox.jpg",
-    "license": "CC BY-SA 4.0",
-    "author": "myself",
-    "source": "https://commons.wikimedia.org/wiki/File:V%C3%A9sicule_varicelle_chickenpox.jpg"
+    "lesion": "atrophic-scar",
+    "title": "File:Atrophic scar, slightly hyperpigmented 01.jpg",
+    "license": "CC BY 4.0",
+    "author": "",
+    "source": "https://commons.wikimedia.org/wiki/File:Atrophic_scar,_slightly_hyperpigmented_01.jpg"
   },
   {
     "lesion": "bulla",
@@ -12,6 +12,27 @@
     "license": "CC BY-SA 4.0",
     "author": "Masryyy",
     "source": "https://commons.wikimedia.org/wiki/File:Impetigo_contagusum_,bulbous_impetigo_new_photo_for_diagnosis.jpg"
+  },
+  {
+    "lesion": "grouped",
+    "title": "File:Sequeira Plate 40.jpg",
+    "license": "Public domain",
+    "author": "James H. Sequeira, M.D., F.R.C.P., F.R.C.S.",
+    "source": "https://commons.wikimedia.org/wiki/File:Sequeira_Plate_40.jpg"
+  },
+  {
+    "lesion": "gyrate",
+    "title": "File:Leg with erythema marginatum Wellcome L0061869.jpg",
+    "license": "CC BY 4.0",
+    "author": "Mark, Leonard Portal",
+    "source": "https://commons.wikimedia.org/wiki/File:Leg_with_erythema_marginatum_Wellcome_L0061869.jpg"
+  },
+  {
+    "lesion": "lichenification",
+    "title": "File:Lichen simplex chronicus 4.jpg",
+    "license": "CC BY 3.0",
+    "author": "kilbad (<a href=\"https://en.wikipedia.org/wiki/User_talk:Kilbad\" cla",
+    "source": "https://commons.wikimedia.org/wiki/File:Lichen_simplex_chronicus_4.jpg"
   },
   {
     "lesion": "pustule",
@@ -28,24 +49,24 @@
     "source": "https://commons.wikimedia.org/wiki/File:Ichthyosis_(1).jpg"
   },
   {
-    "lesion": "lichenification",
-    "title": "File:Lichen simplex chronicus 4.jpg",
-    "license": "CC BY 3.0",
+    "lesion": "target",
+    "title": "File:Target lesion 3.jpg",
+    "license": "CC BY-SA 3.0",
     "author": "kilbad (<a href=\"https://en.wikipedia.org/wiki/User_talk:Kilbad\" cla",
-    "source": "https://commons.wikimedia.org/wiki/File:Lichen_simplex_chronicus_4.jpg"
+    "source": "https://commons.wikimedia.org/wiki/File:Target_lesion_3.jpg"
   },
   {
-    "lesion": "grouped",
-    "title": "File:Sequeira Plate 40.jpg",
-    "license": "Public domain",
-    "author": "James H. Sequeira, M.D., F.R.C.P., F.R.C.S.",
-    "source": "https://commons.wikimedia.org/wiki/File:Sequeira_Plate_40.jpg"
+    "lesion": "tumor",
+    "title": "File:Neurofibroma02 (cropped2).jpg",
+    "license": "CC BY 3.0 de",
+    "author": "Klaus D. Peter, Gummersbach, Germany",
+    "source": "https://commons.wikimedia.org/wiki/File:Neurofibroma02_(cropped2).jpg"
   },
   {
-    "lesion": "atrophic-scar",
-    "title": "File:Atrophic scar, slightly hyperpigmented 01.jpg",
-    "license": "CC BY 4.0",
-    "author": "",
-    "source": "https://commons.wikimedia.org/wiki/File:Atrophic_scar,_slightly_hyperpigmented_01.jpg"
+    "lesion": "vesicle",
+    "title": "File:V\u00e9sicule varicelle chickenpox.jpg",
+    "license": "CC BY-SA 4.0",
+    "author": "myself",
+    "source": "https://commons.wikimedia.org/wiki/File:V%C3%A9sicule_varicelle_chickenpox.jpg"
   }
 ]
