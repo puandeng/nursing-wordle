@@ -63,7 +63,7 @@
 .procedure-game__step {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
   padding: 10px 12px;
   background: var(--surface);
   border: 1.5px solid var(--border);
@@ -107,32 +107,59 @@
   transform: scale(1.02);
 }
 
+/* Position number input */
+.procedure-game__step-input {
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  border: 1.5px solid var(--border);
+  background: var(--hover);
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--text);
+  text-align: center;
+  flex-shrink: 0;
+  padding: 0;
+  outline: none;
+  transition: border-color 0.15s, box-shadow 0.15s;
+  cursor: text;
+  -moz-appearance: textfield;
+}
+
+.procedure-game__step-input::-webkit-outer-spin-button,
+.procedure-game__step-input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.procedure-game__step-input:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.2);
+}
+
+/* Static number badge (locked state) */
 .procedure-game__step-num {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 24px;
-  height: 24px;
-  border-radius: 50%;
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
   background: var(--hover);
-  font-size: 0.75rem;
+  font-size: 0.8rem;
   font-weight: 700;
   color: var(--text-muted);
   flex-shrink: 0;
 }
 
-.procedure-game__step--correct .procedure-game__step-num {
+.procedure-game__step--correct .procedure-game__step-num,
+.procedure-game__step--locked .procedure-game__step-num {
   background: var(--correct-text);
   color: #fff;
 }
 
 .procedure-game__step--wrong .procedure-game__step-num {
   background: var(--wrong-text);
-  color: #fff;
-}
-
-.procedure-game__step--locked .procedure-game__step-num {
-  background: var(--correct-text);
   color: #fff;
 }
 
@@ -143,37 +170,30 @@
   line-height: 1.35;
 }
 
-.procedure-game__step-arrows {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-  flex-shrink: 0;
-}
-
-.procedure-game__arrow {
-  width: 22px;
-  height: 16px;
-  border: none;
-  background: var(--hover);
-  border-radius: 3px;
-  font-size: 0.55rem;
-  color: var(--text-muted);
-  cursor: pointer;
+/* Drag handle */
+.procedure-game__drag-handle {
   display: flex;
   align-items: center;
   justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  background: var(--hover);
+  font-size: 1.1rem;
+  color: var(--text-muted);
+  cursor: grab;
+  flex-shrink: 0;
   transition: background 0.15s, color 0.15s;
-  line-height: 1;
+  touch-action: none;
 }
 
-.procedure-game__arrow:hover:not(:disabled) {
+.procedure-game__drag-handle:hover {
   background: var(--accent);
   color: #fff;
 }
 
-.procedure-game__arrow:disabled {
-  opacity: 0.3;
-  cursor: not-allowed;
+.procedure-game__drag-handle:active {
+  cursor: grabbing;
 }
 
 .procedure-game__step-icon {

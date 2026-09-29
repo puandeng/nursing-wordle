@@ -9,7 +9,8 @@ export default function ProcedureGame() {
   const [won, setWon] = useState(false);
   const [attempts, setAttempts] = useState(0);
   const [showHint, setShowHint] = useState(false);
-  const [phase, setPhase] = useState('playing'); // playing | skipped
+  const [phase, setPhase] = useState('playing');
+  const [checkedCorrect, setCheckedCorrect] = useState(0);
   const dragItem = useRef(null);
   const dragOverItem = useRef(null);
   const [dragging, setDragging] = useState(null);
@@ -44,12 +45,11 @@ export default function ProcedureGame() {
     setDragging(null);
   }, []);
 
-  // Touch drag support
   const touchState = useRef({ startIdx: null, el: null, clone: null, lastOver: null });
 
   const handleTouchStart = useCallback((idx, e) => {
     const touch = e.touches[0];
-    const el = e.currentTarget;
+    const el = e.currentTarget.closest('.procedure-game__step');
     const rect = el.getBoundingClientRect();
     const clone = el.cloneNode(true);
     clone.className = 'procedure-game__step procedure-game__step--clone';
@@ -98,21 +98,13 @@ export default function ProcedureGame() {
     setDragging(null);
   }, []);
 
-  function handleMoveUp(idx) {
-    if (idx === 0) return;
+  function handlePositionChange(fromIdx, newPos) {
+    const target = newPos - 1;
+    if (target < 0 || target >= steps.length || target === fromIdx) return;
     setSteps(prev => {
       const next = [...prev];
-      [next[idx - 1], next[idx]] = [next[idx], next[idx - 1]];
-      return next;
-    });
-    setChecked(false);
-  }
-
-  function handleMoveDown(idx) {
-    if (idx === steps.length - 1) return;
-    setSteps(prev => {
-      const next = [...prev];
-      [next[idx], next[idx + 1]] = [next[idx + 1], next[idx]];
+      const [item] = next.splice(fromIdx, 1);
+      next.splice(target, 0, item);
       return next;
     });
     setChecked(false);
@@ -121,6 +113,8 @@ export default function ProcedureGame() {
   function handleCheck() {
     setAttempts(a => a + 1);
     setChecked(true);
+    const correct = countCorrect(steps);
+    setCheckedCorrect(correct);
     if (checkOrder(steps)) {
       setWon(true);
     }
@@ -130,6 +124,7 @@ export default function ProcedureGame() {
     const sorted = [...steps].sort((a, b) => a.correctIndex - b.correctIndex);
     setSteps(sorted);
     setChecked(true);
+    setCheckedCorrect(sorted.length);
     setWon(false);
     setPhase('skipped');
   }
@@ -143,6 +138,7 @@ export default function ProcedureGame() {
     setAttempts(0);
     setShowHint(false);
     setPhase('playing');
+    setCheckedCorrect(0);
   }
 
   function handleHint() {
@@ -162,7 +158,6 @@ export default function ProcedureGame() {
     setTimeout(() => setShowHint(false), 300);
   }
 
-  const correct = countCorrect(steps);
   const total = steps.length;
 
   return (
@@ -170,7 +165,7 @@ export default function ProcedureGame() {
       <div className="procedure-game__header">
         <h2 className="procedure-game__title">{procedure.title}</h2>
         <p className="procedure-game__desc">
-          Drag the steps into the correct order
+          Arrange the steps in the correct order
         </p>
       </div>
 
@@ -178,10 +173,12 @@ export default function ProcedureGame() {
         <div className="procedure-game__progress-bar">
           <div
             className="procedure-game__progress-fill"
-            style={{ width: `${(correct / total) * 100}%` }}
+            style={{ width: `${(checkedCorrect / total) * 100}%` }}
           />
         </div>
-        <span className="procedure-game__progress-label">{correct}/{total} correct</span>
+        <span className="procedure-game__progress-label">
+          {checked ? `${checkedCorrect}/${total} correct` : `0/${total}`}
+        </span>
       </div>
 
       <div
@@ -192,6 +189,7 @@ export default function ProcedureGame() {
         {steps.map((step, idx) => {
           const isCorrect = checked && step.correctIndex === idx;
           const isWrong = checked && step.correctIndex !== idx;
+          const isLocked = won || phase === 'skipped';
           return (
             <div
               key={step.correctIndex}
@@ -200,31 +198,37 @@ export default function ProcedureGame() {
                 isCorrect ? ' procedure-game__step--correct' : ''
               }${isWrong ? ' procedure-game__step--wrong' : ''
               }${dragging === idx ? ' procedure-game__step--dragging' : ''
-              }${won || phase === 'skipped' ? ' procedure-game__step--locked' : ''}`}
-              draggable={!won && phase === 'playing'}
+              }${isLocked ? ' procedure-game__step--locked' : ''}`}
+              draggable={!isLocked}
               onDragStart={() => handleDragStart(idx)}
               onDragEnter={() => handleDragEnter(idx)}
               onDragEnd={handleDragEnd}
               onDragOver={e => e.preventDefault()}
-              onTouchStart={won || phase === 'skipped' ? undefined : (e) => handleTouchStart(idx, e)}
             >
-              <span className="procedure-game__step-num">{idx + 1}</span>
+              {!isLocked ? (
+                <input
+                  type="text"
+                  inputMode="numeric"
+                  className="procedure-game__step-input"
+                  value={idx + 1}
+                  onChange={(e) => {
+                    const val = parseInt(e.target.value);
+                    if (!isNaN(val)) handlePositionChange(idx, val);
+                  }}
+                  onFocus={e => e.target.select()}
+                  onClick={e => e.stopPropagation()}
+                  onDragStart={e => e.stopPropagation()}
+                />
+              ) : (
+                <span className="procedure-game__step-num">{idx + 1}</span>
+              )}
               <span className="procedure-game__step-text">{step.text}</span>
-              {!won && phase === 'playing' && (
-                <span className="procedure-game__step-arrows">
-                  <button
-                    className="procedure-game__arrow"
-                    onClick={() => handleMoveUp(idx)}
-                    disabled={idx === 0}
-                    aria-label="Move up"
-                  >&#9650;</button>
-                  <button
-                    className="procedure-game__arrow"
-                    onClick={() => handleMoveDown(idx)}
-                    disabled={idx === steps.length - 1}
-                    aria-label="Move down"
-                  >&#9660;</button>
-                </span>
+              {!isLocked && (
+                <span
+                  className="procedure-game__drag-handle"
+                  onTouchStart={(e) => handleTouchStart(idx, e)}
+                  aria-label="Drag to reorder"
+                >⠿</span>
               )}
               {checked && !won && (
                 <span className={`procedure-game__step-icon${isCorrect ? ' procedure-game__step-icon--correct' : ' procedure-game__step-icon--wrong'}`}>
@@ -239,7 +243,7 @@ export default function ProcedureGame() {
       <div className="procedure-game__actions">
         {!won && phase === 'playing' && (
           <>
-            <button className="procedure-game__btn" onClick={handleCheck}>
+            <button className="procedure-game__btn procedure-game__btn--primary" onClick={handleCheck}>
               Check Order
             </button>
             <div className="procedure-game__actions-row">
