@@ -50,13 +50,6 @@ export const LESIONS = [
     causes: 'Contact dermatitis (e.g., poison ivy), Koebner phenomenon, linear morphea, dermatitis artefacta.',
   },
   {
-    id: 'polycyclic',
-    name: 'Polycyclic',
-    category: 'configuration',
-    description: 'Multiple overlapping or interconnected ring-shaped lesions forming scalloped borders.',
-    causes: 'Tinea corporis, urticaria, subacute lupus, psoriasis.',
-  },
-  {
     id: 'zosteriform',
     name: 'Zosteriform',
     category: 'configuration',
@@ -177,13 +170,6 @@ export const LESIONS = [
     causes: 'Eczema, athlete\'s foot, angular cheilitis, dry/cracked heels.',
   },
   {
-    id: 'erosion',
-    name: 'Erosion',
-    category: 'secondary',
-    description: 'A superficial loss of epidermis that does not extend into the dermis. Heals without scarring.',
-    causes: 'Ruptured vesicles or bullae, pemphigus, friction, intertrigo.',
-  },
-  {
     id: 'ulcer',
     name: 'Ulcer',
     category: 'secondary',
@@ -247,13 +233,6 @@ export const LESIONS = [
     category: 'vascular',
     description: 'A raised, bright red, lobulated lesion that appears in infancy and typically involutes (shrinks) by age 5-10.',
     causes: 'Infantile hemangioma — a benign vascular tumor of endothelial cells.',
-  },
-  {
-    id: 'cavernous-hemangioma',
-    name: 'Cavernous Hemangioma',
-    category: 'vascular',
-    description: 'A deeper vascular lesion with a bluish or purple hue, composed of large, dilated blood-filled spaces.',
-    causes: 'Congenital deep vascular malformation. Can occur in skin, liver, brain, or other organs.',
   },
   {
     id: 'telangiectasia',
